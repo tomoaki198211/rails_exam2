@@ -1,0 +1,60 @@
+html {
+  background-color: #f0f2f5;
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.wrapper {
+  padding-top: 50px;
+  padding-bottom: 50px;
+  min-height: 100%;
+  color: #343a40;
+  background-color: #f0f2f5;
+}
+
+header {
+  height: 50px;
+  line-height: 50px;
+  position: fixed;
+  top: 0;
+  background-color: #ffffff;
+  z-index: 0;
+}
+
+.side_menu {
+  position: relative;
+}
+
+.login_rogo {
+  display: inline-block;
+  margin-top: 100px;
+  margin-left: 50px;
+}
+
+.login_rogo p {
+  font-size: 3rem;
+  color: #1877f2;
+}
+
+.login_sign_form {
+  background-color: #ffffff;
+  padding: 10px;
+  border: solid 1px;
+  width: 70%;
+}
+
+.form_content {
+  display: flex;
+  justify-content: end;
+  padding-right: 50px;
+  padding-top: 50px;
+}
+
+.footer {
+  background-color: #f0f2f5;
+}

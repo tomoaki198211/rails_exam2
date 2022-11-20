@@ -2,5 +2,7 @@
 <p>内容: <%= @post.content %></p>
 <p>
   <strong>Picture:</strong>
-  <%= image_tag @post.picture.url %>
+  <% if @post.picture? %>
+    <%= image_tag @post.picture.url %>
+  <% end %>
 </p>
