@@ -5,7 +5,6 @@ class PostsController < ApplicationController
   end
 
   def new
-    login_required
     @post = Post.new
   end
 
@@ -38,6 +37,7 @@ class PostsController < ApplicationController
   end
 
   def destroy
+    set_post
     @post.destroy
     redirect_to posts_path, notice:"削除しました"
   end
@@ -54,7 +54,7 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:content)
+    params.require(:post).permit(:content, :picture, :picture_cache)
   end
 
 end

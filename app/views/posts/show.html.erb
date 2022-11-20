@@ -1,2 +1,6 @@
 <h1>投稿画面</h1>
 <p>内容: <%= @post.content %></p>
+<p>
+  <strong>Picture:</strong>
+  <%= image_tag @post.picture.url %>
+</p>
