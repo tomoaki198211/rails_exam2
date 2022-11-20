@@ -25,6 +25,11 @@ class PostsController < ApplicationController
 
   def edit
     set_post
+    if @post.user == current_user
+      render :edit
+    else
+      redirect_to posts_path,  notice:"編集出来ません。作成者のみ編集可能です"
+    end
   end
 
   def update
@@ -38,8 +43,12 @@ class PostsController < ApplicationController
 
   def destroy
     set_post
-    @post.destroy
-    redirect_to posts_path, notice:"削除しました"
+    if @post.user == current_user
+      @post.destroy
+      redirect_to posts_path, notice:"削除しました"
+    else
+      redirect_to posts_path, notice:"削除出来ません。作成者のみ削除可能です"
+    end
   end
 
   def confirm
