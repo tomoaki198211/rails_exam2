@@ -7,4 +7,7 @@ class User < ApplicationRecord
   before_validation {email.downcase!}
   has_secure_password
   validates :password, length: { minimum: 8 }
+  def posts
+    return Post.where(user_id: self.id).order("created_at DESC")
+  end
 end

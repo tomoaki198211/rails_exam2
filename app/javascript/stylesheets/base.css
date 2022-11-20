@@ -55,6 +55,26 @@ header {
   padding-top: 50px;
 }
 
+.error_message {
+  display: flex;
+  justify-content: end;
+  margin-top: 20px;
+  color: red;
+}
+
 .footer {
   background-color: #f0f2f5;
+}
+
+.content {
+}
+
+.card-columns {
+  display: inline-block;
+}
+
+@media (max-width: 1400px) {
+  .card-columns {
+    column-count: 2;
+  }
 }

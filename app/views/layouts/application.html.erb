@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -30,7 +29,8 @@
           <% if logged_in? %>
             <nav>
               <ul class="nav flex-column m-0 p-3">
-                <li class="nav-item mb-4"><%= link_to '&#127968;ホーム'.html_safe, posts_path, class: "text-decoration-none text-dark" %></li>
+                <li class="nav-item mb-4"><%= link_to @current_user.name+"(my posts)", user_path(current_user.id), class: "text-decoration-none text-dark" %></li>
+                <li class="nav-item mb-4"><%= link_to 'all posts', posts_path, class: "text-decoration-none text-dark" %></li>
                 <li class="nav-item mb-4"><%= link_to '＋投稿する', new_post_path, class: "text-decoration-none text-dark" %></li>
               </ul>
             </nav>
@@ -40,7 +40,7 @@
             </div>
           <% end %>
         </div>
-        <div class="content col-lg-9">
+        <div class="col-lg-9">
           <main>
               <%= yield %>
           </main>

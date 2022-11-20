@@ -1,26 +1,23 @@
-<h1>投稿一覧</h1>
-
 <p><%= notice %></p>
-
-<table>
-  <tr>
-    <th>投稿者<th>
-    <th>内容</th>
-  </tr>
-
-<% @posts.each do |post| %>
-  <tr>
-    <td><%=post.user.name %>
-    <td><%= post.content %></td>
-    <% if post.user.id == current_user.id %>
-      <td><%= link_to '詳細を確認する', post_path(post.id) %></td>
-      <td><%= link_to '編集する', edit_post_path(post.id) %></td>
-      <td><%= link_to '削除する', post_path(post.id), method: :delete ,data: { confirm: '削除してよろしいですか？' } %></td>
-    <% end%>
-  </tr>
-<% end %>
-</table>
-
-<br>
-
+<div class="content">
+  <div class="card-columns">
+    <% @posts.each do |post| %>
+    <div class="card mb-3" style="width: 20rem;">
+      <div class="card-body">
+        <p class="card-text">
+        投稿者:<%= post.user.name %>:<%= post.created_at %><br>
+        <%= post.content %></p>
+        <div class="">
+          <%= link_to "detail", post_path(post.id), class: "card-link" %>
+          <%= link_to "edit", post_path(post.id), class: "card-link" %>
+          <%= link_to 'destroy', post_path(post.id), class: "card-link",method: :delete ,data: { confirm: '削除してよろしいですか？' } %>
+        </div>
+      </div>
+      <% if post.picture? %>
+        <%= image_tag post.picture.url, class: "card-img-bottom" %>
+      <% end %>
+    </div>
+    <% end %>
+  </div>
+</div>
 <%= link_to '新しく投稿する', new_post_path %>
