@@ -1,0 +1,25 @@
+<h1>投稿一覧</h1>
+
+<p><%= notice %></p>
+
+<table>
+  <tr>
+    <th>投稿者<th>
+    <th>内容</th>
+  </tr>
+
+<% @posts.each do |post| %>
+  <tr>
+    <td><%=post.user.name %>
+    <td><%= post.content %></td>
+
+    <td><%= link_to '詳細を確認する', post_path(post.id) %></td>
+    <td><%= link_to '編集する', edit_post_path(post.id) %></td>
+    <td><%= link_to '削除する', post_path(post.id), method: :delete ,data: { confirm: '削除してよろしいですか？' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br>
+
+<%= link_to '新しく投稿する', new_post_path %>
