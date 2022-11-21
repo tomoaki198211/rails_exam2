@@ -23,7 +23,11 @@ header {
   position: fixed;
   top: 0;
   background-color: #ffffff;
-  z-index: 0;
+  z-index: 5;
+}
+
+.flash {
+  color: red;
 }
 
 .side_menu {
@@ -62,11 +66,18 @@ header {
   color: red;
 }
 
-.footer {
-  background-color: #f0f2f5;
+.form_error_m {
+  margin-top: 20px;
+  color: red;
 }
 
-.content {
+.notice {
+  height: 100px;
+  line-height: 100px;
+}
+
+.footer {
+  background-color: #f0f2f5;
 }
 
 .card-columns {

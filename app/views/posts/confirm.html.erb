@@ -1,10 +1,17 @@
 <h3>以下の内容で、送信する。</h3>
 
-<%= form_with(model: @post, local: true, url: posts_path) do |form| %>
-  <%= form.hidden_field :content %>
-  <p>本文:<%= @post.content %></p>
-  <%= image_tag(@post.picture.url) if @post.picture && @post.picture.url %>
-  <%= form.hidden_field :picture_cache %>
-  <%= form.submit  "登録する" %>
-  <%= form.submit "戻る", name: 'back' %>
-<% end %>
+<div class="form_original">
+  <%= form_with(model: @post, local: true, url: posts_path) do |form| %>
+    <div class="card mb-3 p-3" style="width: 20rem;">
+      <div class="card-body">
+        <%= form.text_area :content, readonly: true, class: "card-text form-control", rows: 10, size: 40 %>
+      </div>
+      <% if @post.picture && @post.picture.url %>
+        <%= image_tag @post.picture.url, class: "card-img-bottom" %>
+      <% end %>
+      <%= form.hidden_field :picture_cache %>
+      <%= form.submit class: "btn btn-primary mt-3" %>
+      <%= form.submit '戻る',  class: "btn btn-primary mt-3", name: 'back' %>
+    </div>
+  <% end %>
+</div>

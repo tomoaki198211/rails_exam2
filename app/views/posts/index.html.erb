@@ -1,16 +1,17 @@
-<p><%= notice %></p>
 <div class="content">
   <div class="card-columns">
     <% @posts.each do |post| %>
     <div class="card mb-3" style="width: 20rem;">
       <div class="card-body">
         <p class="card-text">
-        投稿者:<%= post.user.name %>:<%= post.created_at %><br>
+        投稿者:<%= post.user.name %><br><%= l post.created_at, format: :long %><br>
         <%= post.content %></p>
-        <div class="">
+        <div class="text-right">
           <%= link_to "detail", post_path(post.id), class: "card-link" %>
-          <%= link_to "edit", post_path(post.id), class: "card-link" %>
-          <%= link_to 'destroy', post_path(post.id), class: "card-link",method: :delete ,data: { confirm: '削除してよろしいですか？' } %>
+          <% if post.user.id == current_user.id %>
+            <%= link_to "edit", edit_post_path(post.id), class: "card-link" %>
+            <%= link_to 'destroy', post_path(post.id), class: "card-link",method: :delete ,data: { confirm: '削除してよろしいですか？' } %>
+          <% end %>
         </div>
       </div>
       <% if post.picture? %>
@@ -20,4 +21,3 @@
     <% end %>
   </div>
 </div>
-<%= link_to '新しく投稿する', new_post_path %>

@@ -1,8 +1,12 @@
-<h1>投稿画面</h1>
-<p>内容: <%= @post.content %></p>
-<p>
-  <strong>Picture:</strong>
-  <% if @post.picture? %>
-    <%= image_tag @post.picture.url %>
+<div class="form_original">
+  <%= form_with(model: @post, local: true, url: choose_new_or_edit) do |form| %>
+    <div class="card mb-3 p-3" style="width: 20rem;">
+      <div class="card-body">
+        <%= form.text_area :content, readonly: true, class: "card-text form-control", rows: 10, size: 40 %>
+      </div>
+      <% if @post.picture && @post.picture.url %>
+        <%= image_tag @post.picture.url, class: "card-img-bottom" %>
+      <% end %>
+    </div>
   <% end %>
-</p>
+</div>
