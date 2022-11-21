@@ -2,21 +2,21 @@
   <h1><%= @user.name %>の投稿</h1>
   <div class="card-columns">
     <% @user.posts.each do |post| %>
-    <div class="card mb-3" style="width: 20rem;">
-      <div class="card-body">
-        <p class="card-text">
-        投稿者:<%= @user.name %><br><%= l post.created_at, format: :long %><br>
-        <%= post.content %></p>
-        <div class="text-right">
-          <%= link_to "detail", post_path(post.id), class: "card-link" %>
-          <%= link_to "edit", edit_post_path(post.id), class: "card-link" %>
-          <%= link_to 'destroy', post_path(post.id), class: "card-link",method: :delete ,data: { confirm: '削除してよろしいですか？' } %>
+      <div class="card mb-3" style="width: 20rem;">
+        <div class="card-body">
+          <p class="card-text">
+          投稿者:<%= @user.name %><br><%= l post.created_at, format: :long %><br>
+          <%= post.content %></p>
+          <div class="text-right">
+            <%= link_to "detail", post_path(post.id), class: "card-link" %>
+            <%= link_to "edit", edit_post_path(post.id), class: "card-link" %>
+            <%= link_to 'destroy', post_path(post.id), class: "card-link",method: :delete ,data: { confirm: '削除してよろしいですか？' } %>
+          </div>
         </div>
+        <% if post.picture? %>
+          <%= image_tag post.picture.url, class: "card-img-bottom" %>
+        <% end %>
       </div>
-      <% if post.picture? %>
-        <%= image_tag post.picture.url, class: "card-img-bottom" %>
-      <% end %>
-    </div>
     <% end %>
   </div>
 </div>
